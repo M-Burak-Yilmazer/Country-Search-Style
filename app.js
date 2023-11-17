@@ -22,7 +22,7 @@ const showData = (data) => {
       document.body.style = "background: url(./assets/100.png);";
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundSize = "cover";
-      document.body.style.opacity = 0;
+      document.body.style.opacity = 0.5;
     }
 
     const clickValue = e.target.textContent;
