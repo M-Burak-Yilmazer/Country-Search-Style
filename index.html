@@ -9,6 +9,7 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css">
     <title>Country App</title>
     <style>
       #searchDiv {
@@ -23,20 +24,30 @@
     </style>
   </head>
   <body>
+
+    <h1 id="title" class="text-center   text-danger display-4">COUNTRIES</h1>
     <div class="container">
-      <input
+      <input 
         type="search"
-        class="form-control mt-3 w-25 mx-auto rounded-3 p-2"
+        class="form-control mt-1 w-50 mx-auto rounded-3 p-2"
         id="search"
         placeholder="Search Country"
       />
+       <audio id="myaudio" >
+          <source src="./assets/mp3indirdur-Norm-Ender-Parla-100-Yil-Marsi.mp3">
+        </audio>
+        <audio id="memleketim">
+          <source src="./assets/mp3indirdur-Ayten-Alpman-Bir-Baskadir-Benim-Memleketim.mp3" type="">
+        </audio>
       <div class="d-flex flex-column mx-auto w-25" id="searchDiv">
+
+       
         
 
       </div>
     </div>
-    <main class="container mt-2 d-flex flex-column align-items-center">
-      <div class="countries m-4">
+    <main class="container mt-1 d-flex flex-column align-items-center">
+      <div class="countries mt-1">
         <div class="card shadow-lg" style="width: 22rem">
             <img src="#" class="card-img-top shadow" alt="..." />
             <div >

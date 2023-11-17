@@ -1,12 +1,17 @@
 const searchInput = document.querySelector("#search");
 const searchDiv = document.querySelector("#searchDiv");
 const countries = document.querySelector(".countries");
+const audio = document.querySelector("#myaudio");
+const memleketim = document.querySelector("#memleketim");
+const header = document.querySelector("#title");
 
 const getFetch = async () => {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const data = await res.json();
+
   showData(data);
-  getData(data)
+
+  getData(data);
 };
 
 window.addEventListener("load", () => {
@@ -66,19 +71,36 @@ function getData(data) {
     `;
 }
 
-
 const countryArray = [];
 const showData = (data) => {
   data.forEach((element) => countryArray.push(element.name.common));
   console.log(countryArray);
 
   searchDiv.addEventListener("click", (e) => {
+    if (e.target.textContent == "TURKEY") {
+      audio.play();
+      header.style = "color:black !important; font-weight:500";
+      document.body.style = "background: url(./assets/100.png);";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundSize = "cover";
+    }
     const clickValue = e.target.textContent;
     console.log(
       data
         .filter((element) => element.name.common.toUpperCase() === clickValue)
-        .forEach(({ name, capital, region, currencies,flags: { png }, languages,population,borders ,maps:{googleMaps}}) => {
-          countries.innerHTML = `
+        .forEach(
+          ({
+            name,
+            capital,
+            region,
+            currencies,
+            flags: { png },
+            languages,
+            population,
+            borders,
+            maps: { googleMaps },
+          }) => {
+            countries.innerHTML = `
 <div class="card shadow-lg" style="width: 22rem">
             <img src="${png}" class="card-img-top shadow" alt="..." />
             <div >
@@ -100,7 +122,9 @@ const showData = (data) => {
               </li>
               <li class="list-group-item">
                 <i class="fas fa-lg fa-money-bill-wave"></i>
-                <span class="fw-bold"> Currencies:</span> ${currencies[Object.keys(currencies)[0]].name} ; ${currencies[Object.keys(currencies)[0]].symbol}
+                <span class="fw-bold"> Currencies:</span> ${
+                  currencies[Object.keys(currencies)[0]].name
+                } ; ${currencies[Object.keys(currencies)[0]].symbol}
               </li>
               <li class="list-group-item">
               <i class="fa-solid fa-people-group"></i></i>
@@ -120,20 +144,20 @@ const showData = (data) => {
 
 
 `;
-        })
-        
+          }
+        )
     );
     searchDiv.innerHTML = "";
-    searchInput.value=""
-    searchInput.focus()
-
+    searchInput.value = "";
+    searchInput.focus();
   });
-   
 };
 
 searchInput.addEventListener("input", () => {
   // Her input değişikliğinde önceki sonuçları temizle
   searchDiv.innerHTML = "";
+  audio.pause();
+  document.body.style.background = "";
 
   let userInput = searchInput.value;
   countryArray
@@ -146,4 +170,3 @@ searchInput.addEventListener("input", () => {
       searchDiv.appendChild(spanCountry);
     });
 });
-

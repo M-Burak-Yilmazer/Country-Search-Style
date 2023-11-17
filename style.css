@@ -1,0 +1,18 @@
+body{
+    background-image:url(./assets/map-of-the-world-2401458_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#searchDiv span{
+    display:inline-block;
+    width:150%;
+   font-weight: 500;
+    background-color: #caf0f8;
+    color:#03045e;
+    cursor:pointer;
+}
+#searchDiv span:hover{
+    background-color: red;
+    color:white;
+}
