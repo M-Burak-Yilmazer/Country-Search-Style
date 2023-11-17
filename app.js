@@ -22,24 +22,25 @@ const showData = (data) => {
       document.body.style = "background: url(./assets/100.png);";
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundSize = "cover";
-       document.body.style.opacity=0;
+      document.body.style.opacity = 0;
     }
 
     const clickValue = e.target.textContent;
-    data.filter((element) => element.name.common.toUpperCase() === clickValue)
-        .forEach(
-          ({
-            name,
-            capital,
-            region,
-            currencies,
-            flags: { png },
-            languages,
-            population,
-            borders,
-            maps: { googleMaps },
-          }) => {
-            countries.innerHTML = `
+    data
+      .filter((element) => element.name.common.toUpperCase() === clickValue)
+      .forEach(
+        ({
+          name,
+          capital,
+          region,
+          currencies,
+          flags: { png },
+          languages,
+          population,
+          borders,
+          maps: { googleMaps },
+        }) => {
+          countries.innerHTML = `
 <div class="card shadow-lg" style="width: 22rem">
             <img src="${png}" class="card-img-top shadow" alt="..." />
             <div >
@@ -79,9 +80,8 @@ const showData = (data) => {
             </ul>
           </div>
 `;
-          }
-        )
-    ;
+        }
+      );
     searchDiv.innerHTML = "";
     searchInput.value = "";
     searchInput.focus();
